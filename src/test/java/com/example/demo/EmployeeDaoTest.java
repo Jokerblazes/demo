@@ -28,9 +28,11 @@ public class EmployeeDaoTest {
         employee.setAge(20);
         employee.setGender(1);
         employee.setName("小明");
-        Employee save = employeeDao.saveAndFlush(employee);
-        System.out.println(save);
+        Employee save1 = employeeDao.save(employee);
+        assertEquals(save1,employee);
     }
+
+
 
 
 }
