@@ -118,7 +118,7 @@ public class EmployeeDaoTest {
 
     @Test
     public void testGetEmployeeByGender() {
-        List<Employee> employees = employeeDao.findByGender(1);
+        List<Employee> employees = employeeDao.findByGender("男");
         assertTrue(employees.size() >= 1);
 
         //小明

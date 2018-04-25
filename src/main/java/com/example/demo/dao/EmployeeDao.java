@@ -21,5 +21,5 @@ public interface EmployeeDao extends JpaRepository<Employee,Long> {
     List<Employee> findByAge(@Param("age") int age);
 
     @Query(value = "select e from Employee e where e.gender=:gender")
-    List<Employee> findByGender(@Param("gender") int gender);
+    List<Employee> findByGender(@Param("gender") String gender);
 }
