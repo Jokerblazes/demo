@@ -38,13 +38,18 @@ public class EmployeeDaoTest {
 
     @Test
     public void testUpdateEmployee() {
+        Employee employee = createXIaoHong();
+        Employee save = employeeDao.save(employee);
+        compareEmployeesEqual(employee,save);
+    }
+
+    private Employee createXIaoHong() {
         Employee employee = new Employee();
         employee.setId((long)2);
         employee.setAge(19);
         employee.setGender(2);
         employee.setName("小红");
-        Employee save = employeeDao.save(employee);
-        compareEmployeesEqual(employee,save);
+        return employee;
     }
 
     private void compareEmployeesEqual(Employee employee1,Employee employee2) {
@@ -57,29 +62,17 @@ public class EmployeeDaoTest {
     @Test
     public void testDeleteEmployee() {
         employeeDao.deleteById((long)1);
-        Employee employee = new Employee();
-        employee.setId((long)2);
-        employee.setAge(19);
-        employee.setGender(2);
-        employee.setName("小红");
+        Employee employee = createXIaoHong();
         employeeDao.delete(employee);
     }
 
     @Test
     public void testGetAllEmployee() {
         //小明
-        Employee employee1 = new Employee();
-        employee1.setId((long)1);
-        employee1.setAge(20);
-        employee1.setGender(1);
-        employee1.setName("小明");
+        Employee employee1 = createXIaoMing();
 
         //小红
-        Employee employee2 = new Employee();
-        employee2.setId((long)2);
-        employee2.setAge(19);
-        employee2.setGender(2);
-        employee2.setName("小红");
+        Employee employee2 = createXIaoHong();
         List<Employee> all = employeeDao.findAll();
         assertTrue(all.size() >= 2);
         compareEmployeesEqual(all.get(0),employee1);
@@ -90,12 +83,17 @@ public class EmployeeDaoTest {
     public void testGetEmployeeById() {
         Employee employee = employeeDao.findById((long) 1).get();
         //小明
+        Employee employee1 = createXIaoMing();
+        compareEmployeesEqual(employee1,employee);
+    }
+
+    private Employee createXIaoMing() {
         Employee employee1 = new Employee();
         employee1.setId((long)1);
         employee1.setAge(20);
         employee1.setGender(1);
         employee1.setName("小明");
-        compareEmployeesEqual(employee1,employee);
+        return employee1;
     }
 
     @Test
@@ -104,11 +102,7 @@ public class EmployeeDaoTest {
         assertTrue(employees.size() >= 1);
 
         //小明
-        Employee employee1 = new Employee();
-        employee1.setId((long)1);
-        employee1.setAge(20);
-        employee1.setGender(1);
-        employee1.setName("小明");
+        Employee employee1 = createXIaoMing();
         compareEmployeesEqual(employee1,employees.get(0));
     }
 
@@ -118,11 +112,7 @@ public class EmployeeDaoTest {
         assertTrue(employees.size() >= 1);
 
         //小明
-        Employee employee1 = new Employee();
-        employee1.setId((long)1);
-        employee1.setAge(20);
-        employee1.setGender(1);
-        employee1.setName("小明");
+        Employee employee1 = createXIaoMing();
         compareEmployeesEqual(employee1,employees.get(0));
     }
 
@@ -132,11 +122,7 @@ public class EmployeeDaoTest {
         assertTrue(employees.size() >= 1);
 
         //小明
-        Employee employee1 = new Employee();
-        employee1.setId((long)1);
-        employee1.setAge(20);
-        employee1.setGender(1);
-        employee1.setName("小明");
+        Employee employee1 = createXIaoMing();
         compareEmployeesEqual(employee1,employees.get(0));
     }
 }
