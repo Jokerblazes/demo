@@ -5,6 +5,7 @@ import com.example.demo.po.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -69,6 +70,12 @@ public class EmployeeController {
         employeeDao.save(employee);
         return "success";
     }
+
+    @RequestMapping("/employeePage")
+    public ModelAndView  getEmployeesPage() {
+        return new ModelAndView("employee", "employees", employeeDao.findAll());
+    }
+
 
 
 
